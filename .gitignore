@@ -1,0 +1,34 @@
+# Dependencias y artefactos generados (se reconstruyen con npm run build)
+node_modules/
+dist/
+app/e2e/.cache/
+__pycache__/
+.venv/
+venv/
+
+# Secretos: NUNCA al repositorio. Solo se versiona la plantilla .env.example
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.jwk
+*.mobileprovision
+GoogleService-Info.plist
+google-services.json
+
+# Datos del servidor (contienen hashes y bóvedas cifradas de usuarios)
+data/
+*.sqlite
+*.db
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

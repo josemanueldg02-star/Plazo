@@ -1,0 +1,38 @@
+{
+  "v": 1,
+  "seq": 1,
+  "issuedAt": "2026-10-30",
+  "expiresAt": "2027-01-31",
+  "stores": [
+    {
+      "id": "pccomponentes",
+      "name": "PcComponentes",
+      "variants": [
+        {
+          "id": "propio",
+          "label": "Vendido por PcComponentes",
+          "channels": ["online"],
+          "returnDays": 30,
+          "countFrom": "entrega",
+          "note": "Productos nuevos y reacondicionados. No incluye artículos sin derecho de desistimiento, como los precintados por higiene una vez abiertos.",
+          "source": "https://www.pccomponentes.com/landings/condiciones-de-compra",
+          "checkedAt": "2026-10-30",
+          "policyUpdatedAt": "2026-10-19",
+          "campaigns": []
+        },
+        {
+          "id": "marketplace",
+          "label": "Vendedor externo (Marketplace)",
+          "channels": ["online"],
+          "returnDays": null,
+          "countFrom": "entrega",
+          "note": "La política de PcComponentes no se aplica a vendedores externos: consulta la del vendedor en tu pedido. Los 14 días legales siguen vigentes.",
+          "source": "https://www.pccomponentes.com/landings/condiciones-de-compra",
+          "checkedAt": "2026-10-30",
+          "policyUpdatedAt": "2026-10-19",
+          "campaigns": []
+        }
+      ]
+    }
+  ]
+}

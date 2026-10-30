@@ -1,0 +1,40 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read   # mínimo privilegio: el workflow no puede escribir en el repo
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 26]   # versión mínima soportada y LTS actual
+    steps:
+      # Recomendado: fijar cada acción a su SHA completo en vez de a la etiqueta (ataques a la cadena de suministro).
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Escaneo de secretos (propio)
+        run: node scripts/check-secrets.mjs
+      - name: Pruebas unitarias y de integración (motor legal, cifrado, servidor)
+        run: npm test
+      - name: Build (falla si detecta innerHTML, eval o </script>)
+        run: npm run build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Navegador de pruebas
+        run: pip install playwright==1.56.0 && python -m playwright install --with-deps chromium
+      - name: Pruebas de extremo a extremo (móvil 390x844, PWA con CSP y demo)
+        run: python app/e2e/test_app.py
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # revisa todo el historial, no solo el último commit
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

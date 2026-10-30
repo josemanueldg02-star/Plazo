@@ -1,0 +1,23 @@
+{
+  "name": "plazo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plazo: tus garantías y devoluciones, cifradas en tu móvil.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"core/test/*.test.js\" \"server/test/*.test.js\"",
+    "test:core": "node --test \"core/test/*.test.js\"",
+    "test:server": "node --test \"server/test/*.test.js\"",
+    "build": "node app/build.mjs",
+    "e2e": "node app/build.mjs && python3 app/e2e/test_app.py",
+    "serve": "node app/build.mjs && node app/serve.mjs",
+    "server": "node server/src/index.js",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "hooks": "git config core.hooksPath .githooks",
+    "catalog:keygen": "node scripts/catalog-keygen.mjs",
+    "catalog:sign": "node scripts/catalog-sign.mjs"
+  }
+}

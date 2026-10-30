@@ -1,0 +1,3 @@
+#!/bin/sh
+# Bloquea el commit si detecta secretos. Se activa con: npm run hooks
+node scripts/check-secrets.mjs --staged || exit 1
