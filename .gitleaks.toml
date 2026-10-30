@@ -1,0 +1,8 @@
+# Configuración de gitleaks: reglas por defecto + falsos positivos documentados.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Nombres de datos guardados en el navegador (localStorage), no son secretos"
+regexTarget = "secret"
+regexes = ['''^plazo\.[a-z]+\.v1$''']
